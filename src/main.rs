@@ -5,7 +5,7 @@ use std::env;
 
 fn main() {
     let args: Vec<String> = env::args().skip(1).collect();
-    let auth = Auth::new("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");
+    let auth = Auth::new("");
     let openai = OpenAI::new(auth, "https://api.openai.com/v1/");
     let body = ChatBody {
         model: "gpt-3.5-turbo".to_string(),
@@ -20,7 +20,7 @@ fn main() {
         logit_bias: None,
         user: Some("OkadaPy".to_string()),
         messages: vec![
-            Message {role: Role::System, content: "Ты являешься программистом, ответь на интересующие твоего товарища вопросы".to_string()},
+            Message {role: Role::System, content: "PROMPT".to_string()},
             Message {role: Role::User, content: args.join(" ")}
         ]
     };
